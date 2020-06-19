@@ -110,7 +110,7 @@ class BorrowController extends Controller
             DB::rollBack();
             return $exception->getMessage();
         }
-        Session::flash('success', 'Trả sách thành công');
+        toastr()->success('Trả sách thành công!');
         return redirect()->route('borrows.index');
     }
     public function returnList()
