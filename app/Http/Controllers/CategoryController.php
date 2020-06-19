@@ -40,7 +40,7 @@ class CategoryController extends Controller
             abort(403);
         }
         $this->cateService->create($request);
-        Session::flash('success', 'Thêm thành công');
+        toastr()->success('Thêm thành công!');
         return redirect()->route('categories.index');
 
     }
@@ -60,7 +60,7 @@ class CategoryController extends Controller
         }
         $user = $this->cateService->findById($id);
         $this->cateService->update($request, $user);
-        Session::flash('success', 'Cập nhật thành công');
+        toastr()->success('Cập nhật thành công!');
         return redirect()->route('categories.index');
     }
 
@@ -71,7 +71,7 @@ class CategoryController extends Controller
         }
         $user = $this->cateService->findById($id);
         $this->cateService->delete($user);
-        Session::flash('success', 'Xóa thành công');
+        toastr()->success('Xóa thành công!');
         return redirect()->route('categories.index');
     }
 }

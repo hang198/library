@@ -42,7 +42,7 @@ class LibraryController extends Controller
             abort(403);
         }
         $this->libraryService->create($request);
-        Session::flash('success', 'Thêm thành công');
+        toastr()->success('Thêm thành công!');
         return redirect()->route('libraries.index');
     }
     public function edit($id)
@@ -60,7 +60,7 @@ class LibraryController extends Controller
         }
         $library = $this->libraryService->findById($id);
         $this->libraryService->update($request,$library);
-        Session::flash('success', 'Cập nhật thành công');
+        toastr()->success('Cập nhật thành công!');
         return redirect()->route('libraries.index');
     }
     public function destroy($id)
@@ -70,7 +70,7 @@ class LibraryController extends Controller
         }
         $library = $this->libraryService->findById($id);
         $this->libraryService->delete($library);
-        Session::flash('success', 'Xóa thành công');
+        toastr()->success('Xóa thành công!');
         return redirect()->route('libraries.index');
     }
 }

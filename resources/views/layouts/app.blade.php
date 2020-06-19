@@ -41,6 +41,7 @@
     <!-- jQuery 3 -->
     <script src="{{ asset('assets/vendor_components/jquery-3.3.1/jquery-3.3.1.js') }}"></script>
     <script src="{{asset('js/my.js')}}"></script>
+    @toastr_css
 </head>
 <body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
@@ -394,7 +395,7 @@
 
 <!-- Bankio admin dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('js/js/pages/dashboard.js') }}"></script>
-
-
+@toastr_js
+@toastr_render
 </body>
 </html>

@@ -44,7 +44,7 @@ class UserController extends Controller
             abort(403);
         }
         $this->userService->create($request);
-        Session::flash('success', 'Thêm thành công');
+        toastr()->success('Thêm thành công!');
         return redirect()->route('users.index');
     }
 
@@ -83,7 +83,7 @@ class UserController extends Controller
         }
 
         $this->userService->update($request, $user);
-        Session::flash('success', 'Cập nhật thành công');
+        toastr()->success('Cập nhật thành công!');
         return redirect()->route('users.index');
     }
 
@@ -102,7 +102,7 @@ class UserController extends Controller
             abort(403);
         }
         $this->userService->delete($user);
-        Session::flash('success', 'Xóa thành công');
+        toastr()->success('Xóa thành công!');
         return redirect()->route('users.index');
     }
 
@@ -113,7 +113,7 @@ class UserController extends Controller
         }
         $user = $this->userService->findByIdIntoTrash($id);
         $this->userService->restore($user);
-        Session::flash('success', 'Phục hồi thành công');
+        toastr()->success('Phục hồi thành công!');
         return redirect()->route('users.trash');
     }
 
@@ -133,7 +133,7 @@ class UserController extends Controller
         }
         $userOfForce = $this->userService->findByIdIntoTrash($id);
         $this->userService->forceDelete($userOfForce);
-        Session::flash('success', 'Xóa vĩnh viễn thành công');
+        toastr()->success('Xóa vĩnh viễn thành công!');
         return redirect()->route('users.trash');
     }
 

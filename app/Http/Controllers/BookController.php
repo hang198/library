@@ -45,7 +45,7 @@ class BookController extends Controller
             abort(403);
         }
         $this->bookService->create($request);
-        Session::flash('success', 'Thêm thành công');
+        toastr()->success('Thêm thành công!');
         return redirect()->route('books.index');
     }
 
@@ -67,7 +67,7 @@ class BookController extends Controller
         }
         $book = $this->bookService->findById($id);
         $this->bookService->update($request, $book);
-        Session::flash('success', 'Cập nhật thành công');
+        toastr()->success('Cập nhật thành công!');
         return redirect()->route('books.index');
     }
 
@@ -78,7 +78,7 @@ class BookController extends Controller
         }
         $book = $this->bookService->findById($id);
         $this->bookService->delete($book);
-        Session::flash('success', 'Xóa thành công');
+        toastr()->success('Xóa thành công!');
         return redirect()->route('books.index');
     }
 

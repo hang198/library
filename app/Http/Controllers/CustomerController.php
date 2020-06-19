@@ -36,7 +36,7 @@ class CustomerController extends Controller
             abort(403);
         }
         $this->customerService->create($request);
-        Session::flash('success', 'Thêm thành công');
+        toastr()->success('Thêm thành công!');
         return redirect()->route('customers.index');
     }
     public function edit($id)
@@ -55,7 +55,7 @@ class CustomerController extends Controller
         }
         $customer = $this->customerService->findById($id);
         $this->customerService->update($request, $customer);
-        Session::flash('success', 'Cập nhật thành công');
+        toastr()->success('Cập nhật thành công!');
         return redirect()->route('customers.index');
     }
 
@@ -66,7 +66,7 @@ class CustomerController extends Controller
         }
         $customer = $this->customerService->findById($id);
         $this->customerService->delete($customer);
-        Session::flash('success', 'Xóa thành công');
+        toastr()->success('Xóa thành công!');
         return redirect()->route('customers.index');
     }
 
