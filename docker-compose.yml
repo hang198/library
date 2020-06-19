@@ -1,0 +1,39 @@
+version: "3"
+services:
+  server:
+    image: nginx
+    container_name: nginx
+    ports:
+      - 8010:80
+  backend:
+    build: .
+    container_name: app.library
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+  db:
+    image: mysql:5.7
+    container_name: db
+    hostname: library.db
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: library
+    ports:
+      - 3307:3306
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - db
+    external_links:
+      - db:mysql
+    ports:
+      - "9191:80"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: 1
+      PMA_HOST: db
