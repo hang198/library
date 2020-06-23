@@ -20,6 +20,7 @@
                             <div class="col">
                                 <form  method="post" action="{{route('users.store')}}">
                                     @csrf
+
                                     <div class="row">
                                         <div class="col-xl-6 col-12">
                                             <div class="form-group">
