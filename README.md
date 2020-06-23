@@ -9,7 +9,7 @@ https://library-dream.herokuapp.com/
 ```
 ## Chức năng
 - Phân quyền Login/Logout với 3 role là thủ thư, khách hàng, admin
-- Quản lý 3 đối tượng chính là Sách, Người dùng và Phiếu mượn
+- Quản lý 4 đối tượng chính là Sách, Thư mục sách, Người dùng và Phiếu mượn
 - Xoá mềm
 - Thông báo sử dụng ToastJS
 - Tìm kiếm, thêm thông tin sách và người dùng vào phiếu mượn sử dụng Ajax
