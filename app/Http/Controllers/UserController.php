@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\UsersExport;
 use App\Http\Requests\CreateUserRequest;
+use App\Imports\UsersImport;
 use App\Repositories\UserRepository;
 use App\Services\UserService;
 use App\User;
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -19,6 +22,18 @@ class UserController extends Controller
     public function __construct(UserService $userService)
     {
         $this->userService = $userService;
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'test.xlsx');
+    }
+
+    public function import()
+    {
+        Excel::import(new UsersImport, request()->file('file'));
+
+        return back();
     }
 
     public function index()

@@ -26,6 +26,15 @@
                             <div class="alert alert-success">{{Session::get('success')}}</div>
                         @endif
                         <a class="btn btn-primary" href="{{route('users.create')}}">Create</a>
+                            <div class="card-body">
+                                <form action="{{ route('users.import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="file" class="form-control">
+                                    <br>
+                                    <button class="btn btn-success">Import User Data</button>
+                                    <a class="btn btn-warning" href="{{ route('users.export') }}">Export User Data</a>
+                                </form>
+                            </div>
                         <div class="table-responsive">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>

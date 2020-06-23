@@ -25,6 +25,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::prefix('users')->group(function () {
         Route::get('/', 'UserController@index')->name('users.index');
+        Route::post('import', 'UserController@import')->name('users.import');
+        Route::get('export', 'UserController@export')->name('users.export');
         Route::get('/trash', 'UserController@getTrash')->name('users.trash');
         Route::get('/create', 'UserController@create')->name('users.create');
         Route::post('/create', 'UserController@store')->name('users.store');
